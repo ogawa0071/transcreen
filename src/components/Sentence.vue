@@ -16,6 +16,7 @@
 import { Component, Prop, Vue } from 'vue-property-decorator'
 @Component
 export default class Sentence extends Vue {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   @Prop() data: any;
 }
 </script>
