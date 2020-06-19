@@ -31,8 +31,8 @@ function createWindow () {
     height: 600,
     transparent: true,
     frame: false,
-    toolbar: false,
-    titleBarStyle: 'hidden-inset',
+    // toolbar: false,
+    titleBarStyle: 'hiddenInset',
     backgroundColor: '#00000000',
     webPreferences: {
       nodeIntegration: true

@@ -23,7 +23,7 @@
 import { Component, Vue } from 'vue-property-decorator'
 import { ipcRenderer } from 'electron'
 import axios from 'axios'
-import Sentence from '@/components/Sentence'
+import Sentence from './components/Sentence.vue'
 @Component({
   components: {
     Sentence
@@ -49,6 +49,7 @@ export default class App extends Vue {
       canvas.height = args.targetBounds.height
       const ctx = canvas.getContext('2d')
       if (ctx) {
+        // eslint-disable-next-line no-console
         console.log(args.targetBounds)
         ctx.drawImage(
           photo,
