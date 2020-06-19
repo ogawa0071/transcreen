@@ -1,6 +1,13 @@
 'use strict'
 
-import { app, protocol, BrowserWindow, globalShortcut, screen, ipcMain } from 'electron'
+import {
+  app,
+  protocol,
+  BrowserWindow,
+  globalShortcut,
+  screen,
+  ipcMain
+} from 'electron'
 import {
   createProtocol
   /* installVueDevtools */
@@ -13,7 +20,9 @@ const isDevelopment = process.env.NODE_ENV !== 'production'
 let win: BrowserWindow | null
 
 // Scheme must be registered before the app is ready
-protocol.registerSchemesAsPrivileged([{ scheme: 'app', privileges: { secure: true, standard: true } }])
+protocol.registerSchemesAsPrivileged([
+  { scheme: 'app', privileges: { secure: true, standard: true } }
+])
 
 function createWindow () {
   // Create the browser window.
@@ -33,10 +42,12 @@ function createWindow () {
   const updateCaptureRectAndTranslate = () => {
     const bounds = myWindow.getBounds()
     const myScreen = screen.getAllDisplays().filter((screen) => {
-      return screen.bounds.x <= bounds.x &&
+      return (
+        screen.bounds.x <= bounds.x &&
         screen.bounds.y <= bounds.y &&
         screen.bounds.x + screen.bounds.width >= bounds.x + bounds.width &&
         screen.bounds.y + screen.bounds.height >= bounds.y + bounds.height
+      )
     })
     if (myScreen.length) {
       const currentScreen = myScreen[0]
@@ -127,7 +138,6 @@ app.on('ready', async () => {
     // } catch (e) {
     //   console.error('Vue Devtools failed to install:', e.toString())
     // }
-
   }
   createWindow()
 })
@@ -135,7 +145,7 @@ app.on('ready', async () => {
 // Exit cleanly on request from parent process in development mode.
 if (isDevelopment) {
   if (process.platform === 'win32') {
-    process.on('message', data => {
+    process.on('message', (data) => {
       if (data === 'graceful-exit') {
         app.quit()
       }

@@ -30,8 +30,8 @@ import Sentence from '@/components/Sentence'
   }
 })
 export default class App extends Vue {
-  public visible = true
-  public sentences =[];
+  public visible = true;
+  public sentences = [];
   async mounted () {
     ipcRenderer.on('translate', async (event, args) => {
       const source = await navigator.mediaDevices.getUserMedia({
@@ -50,7 +50,17 @@ export default class App extends Vue {
       const ctx = canvas.getContext('2d')
       if (ctx) {
         console.log(args.targetBounds)
-        ctx.drawImage(photo, args.targetBounds.x, args.targetBounds.y, args.targetBounds.width, args.targetBounds.height, 0, 0, args.targetBounds.width, args.targetBounds.height)
+        ctx.drawImage(
+          photo,
+          args.targetBounds.x,
+          args.targetBounds.y,
+          args.targetBounds.width,
+          args.targetBounds.height,
+          0,
+          0,
+          args.targetBounds.width,
+          args.targetBounds.height
+        )
         const dataurl = canvas.toDataURL('jpg')
         const bin = atob(dataurl.split(',')[1])
         const buffer = new Uint8Array(bin.length)
@@ -60,7 +70,9 @@ export default class App extends Vue {
         const blob = new Blob([buffer.buffer], { type: 'image/jpg' })
         const data = new FormData()
         data.append('image', blob, 'image.jpg')
-        this.sentences = (await axios.post('/ TODO Please Replace Your API/', data)).data
+        this.sentences = (
+          await axios.post('/ TODO Please Replace Your API/', data)
+        ).data
       }
     })
 
@@ -89,10 +101,10 @@ export default class App extends Vue {
   -webkit-app-region: no-drag;
   text-align: center;
   position: absolute;
-  top:5%;
-  left:5%;
-  right:5%;
-  bottom:5%;
+  top: 5%;
+  left: 5%;
+  right: 5%;
+  bottom: 5%;
 
   background: rgba(255, 255, 255, 1);
 }
