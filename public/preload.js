@@ -5,7 +5,7 @@ contextBridge.exposeInMainWorld('electronApi', {
       types: ['screen'],
       thumbnailSize: { width: 512, height: 512 }
     })
-    sources.map((src) => {
+    sources.map(src => {
       src.thumbnail = src.thumbnail.toDataURL()
     })
     return sources

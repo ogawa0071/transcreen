@@ -41,7 +41,7 @@ function createWindow () {
   const myWindow = win
   const updateCaptureRectAndTranslate = () => {
     const bounds = myWindow.getBounds()
-    const myScreen = screen.getAllDisplays().filter((screen) => {
+    const myScreen = screen.getAllDisplays().filter(screen => {
       return (
         screen.bounds.x <= bounds.x &&
         screen.bounds.y <= bounds.y &&
@@ -145,7 +145,7 @@ app.on('ready', async () => {
 // Exit cleanly on request from parent process in development mode.
 if (isDevelopment) {
   if (process.platform === 'win32') {
-    process.on('message', (data) => {
+    process.on('message', data => {
       if (data === 'graceful-exit') {
         app.quit()
       }

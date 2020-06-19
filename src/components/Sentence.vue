@@ -5,7 +5,7 @@
       top: `${data.y}px`,
       left: `${data.x}px`,
       width: `${data.w}px`,
-      height: `${data.h}px`,
+      height: `${data.h}px`
     }"
   >
     <span>{{ data.text }}</span>
